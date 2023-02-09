@@ -1,0 +1,67 @@
+ATF NOTES FOR MICRO CERTIFICATION ATF
+
+ATF is good for:
+1. Functional or functional business logic testing.
+2. Regression testing
+3. Browser Comp testing
+4. Server Side Jasmine testing
+
+ATF is not good for:
+1. Load testing
+2. Performance testing
+3. Report testing
+4. Email format testing
+
+Building blocks of ATF:
+1. Test suites : A test suite groups tests together that are typically performed one after the other. 
+    Test suites represent a grouping of one or more tests or other test suites. The hierarchy of child test 
+    suites can be to any level. The same test can be included within multiple test suites. However, a test 
+    suite can only be assigned one parent test suite.
+2. Tests: An ATF test represents a set of actions and assertions to verify an expected end result. 
+    Each action or assertion within the test is represented by an individual test step. Although there 
+    is no limit to the number of test steps contained within a test, it is typically better to create 
+    smaller focused tests, rather than larger broad tests. 
+    
+    Note: When using an Agile development approach, an ATF test can be assigned to a Story.
+    It represents an individual test case with a given acceptance criteria.
+    
+    Client and server:
+    Some of the test steps within a test are performed on the client user interface, 
+    while others are performed on the server. A single test can include both client and server actions and assertions. 
+    Test steps performed on the client simulate user interactions, such as opening a form. 
+    Test steps performed on the server execute in the background and cover a wide range of possibilities.
+
+# Best Practice: Always create a user, give it roles, and then impersonate to ensure proper self-contained test W/O any dependencies.
+
+3. Test steps: A test step represents a single action or assertion within a test, such as creating a user, 
+    opening a form, or validating a field value. Different types of test steps are created using different 
+    test step configurations. A test step configuration defines the behavior and characteristics of each 
+    type of action or assertion.
+
+
+
+ATF roles
+1. Test Designer
+2. Test Administrator
+3. Web Service Tester
+
+Note: ATF test suite can either be run on-demand or scheduled. ATF Test are only on-demand
+
+Failure of a Test in a Test Suite can result in either complete haul or moving to the next test
+
+# KEEP ATF OUT OF PRODUCTION
+
+##Some of the important reasons ATF is prevented from running on their production instance include:
+1. Running ATF tests slows down instance performance
+2. Changes made within an ATF test would be visible to users before the rollback
+3. Actionable events, such as email notifications to customers or approvals to managers, 
+    would be triggered from data changed by ATF tests
+4. Sensitive production data could be seen when impersonating a user
+5. Audit history of data changes would remain even after data rollback
+
+NOTE: Although ATF is not run in a production environment, ATF development objects are still promoted 
+    into the production instance. This ensures they will be included when the production instance is 
+    cloned down to the development or test instances. 
+
+ATF quick start tests are predefined test which can reduce the development effort
+
