@@ -63,5 +63,46 @@ NOTE: Although ATF is not run in a production environment, ATF development objec
     into the production instance. This ensures they will be included when the production instance is 
     cloned down to the development or test instances. 
 
+#Pointers
 ATF quick start tests are predefined test which can reduce the development effort
 
+Running ATF tests in parallel is NOT possible in a PDI
+BUT
+It is possible to run ATF in parallel in customer instance
+
+Test runs are visible under: ATF> Run> Waiting/Running Test runs
+
+Rollback Indepth:
+
+1. Tables excluded from rollback
+    Any records modified in the following tables are excluded from the rollback following 
+    a test run. Emails and reports are typically excluded, so their content and styling can be checked manually.
+
+    History [sys_history_line]
+    ECC Queue [ecc_queue]
+    Email [sys_email]
+    Email Log [sys_email_log]
+    Report Execution [report_executions]
+    Report Stats [report_stats]
+    or any table extending these tables
+
+2. Tables excluded from rollback (Custom)
+
+    Additional tables can be excluded from the rollback after a test run by adding an 
+    excludedFromRollback=true Attribute to their Collection record in 
+    
+    System Definition> Dictionary
+        Attributes
+        Set Exclude from Rollback as True
+
+3. Asynchronus Data Changes
+    Some asynchronous changes are not always finished in time to be included within the 
+    rollback following a test run. This would include things like event processing, 
+    email notifications, and workflow updates. Do not rely on the rollback of asynchronous 
+    changes to complete before the next test is run.
+
+
+Adding Breakpoints to a test can help in debugging the ATF
+If required it is possible to fill out a form when debugging a test
+
+Just select the test step, right click and add Breakpoints to it
