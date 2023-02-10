@@ -106,3 +106,10 @@ Adding Breakpoints to a test can help in debugging the ATF
 If required it is possible to fill out a form when debugging a test
 
 Just select the test step, right click and add Breakpoints to it
+
+
+How to use Quick Start Guides
+1. Go to ATF-> Tests
+2. Then go to the particular quick start Guides
+3. Set the scope of the application
+4. Make a copy of the quick start 
